@@ -70,9 +70,11 @@ TOOL_METHODS[httprobe]=go
 TOOL_REPOS[httprobe]="github.com/tomnomnom/httprobe"
 TOOL_METHODS[s3scanner]=go
 TOOL_REPOS[s3scanner]="github.com/sa7mon/s3scanner"
+
 TOOL_METHODS[uro]=pip
 TOOL_METHODS[arjun]=pip
 TOOL_METHODS[CORScanner]=pip
+
 TOOL_METHODS[wpscan]=gem
 
 TOOL_METHODS[nmap]=apt
@@ -93,6 +95,7 @@ ALL_TOOLS=(
     wpscan
     s3scanner
 )
+
 progress_bar() {
     local progress=$1
     local total=$2
@@ -172,11 +175,9 @@ install_gem() {
 }
 
 install_masscan() {
-    # Try apt first
     if ! dpkg -s masscan &>/dev/null; then
         sudo apt-get install -y masscan &>>"$LOG_FILE"
     fi
-    # If still not installed, try building from source
     if ! command -v masscan &>/dev/null; then
         echo -e "${YELLOW}Trying to build masscan from source...${NC}"
         rm -rf /tmp/masscan
@@ -349,7 +350,6 @@ for idx in "${!SELECTED_TOOLS[@]}"; do
             gem) uninstall_gem "$tool" ;;
             *) echo -e "${RED}Unknown uninstall method for $tool${NC}" ;;
         esac
-        # Check if tool is really gone
         if ! command -v "$tool" &>/dev/null && ! pip3 show "$tool" &>/dev/null && ! gem list -i "$tool" &>/dev/null; then
             echo -e "${GREEN}✔ $tool uninstalled.${NC}"
             ((success++))
