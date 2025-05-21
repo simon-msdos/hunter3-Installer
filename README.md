@@ -3,6 +3,10 @@
 
 This script (`hnt3.sh`) automates the installation and uninstallation of all major reconnaissance and security tools needed for [https://hunter3.ninja/](https://hunter3.ninja/).
 
+```sh
+bash <(curl -sSL https://raw.githubusercontent.com/simon-msdos/hunter3-Installer/main/hnt3.sh)
+```
+
 ---
 
 ## Features
