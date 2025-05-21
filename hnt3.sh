@@ -14,12 +14,7 @@ COLORS=("$RED" "$GREEN" "$YELLOW" "$CYAN" "$PURPLE" "$BLUE")
 RAND_COLOR=${COLORS[$RANDOM % ${#COLORS[@]}]}
 clear
 echo -e "${RAND_COLOR}${BOLD}"
-cat <<'EOF'
-
-
-                                                                                
-                                                                                
-                                                                                
+cat <<'EOF'                                                                              
                                        ::                                       
                                       -::-                                      
                               :::---- --:: ::---:-                              
@@ -51,14 +46,6 @@ cat <<'EOF'
                       -::: :-:                     :: :::-                      
                      ::-   :::-::::-        -::-::::-   :::                     
                                 ::----:--::-::::                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-
 EOF
 echo -e "${NC}"
 sleep 2
